@@ -522,13 +522,13 @@ html, body, [data-testid="stAppViewContainer"] {
     overflow: hidden;
     border-radius: 10px 10px 0 0;
     width: 100% !important;
-    height: 280px !important;
+    height: 220px !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 [data-testid="stImage"] img {
     width: 100% !important;
-    height: 280px !important;
+    height: 220px !important;
     object-fit: cover !important;
     object-position: center top !important;
     display: block !important;
@@ -957,8 +957,8 @@ if search_clicked:
 
 render_watch_history()
 if trending_movies:
-    render_movie_grid("&#128293; TRENDING THIS WEEK", trending_movies, limit=10, columns=5)
+    render_movie_grid("&#128293; TRENDING THIS WEEK", trending_movies, limit=10, columns=7)
 
 if top_rated_movies:
-    render_movie_grid("&#11088; TOP RATED ALL TIME", top_rated_movies, limit=10, columns=5)
+    render_movie_grid("&#11088; TOP RATED ALL TIME", top_rated_movies, limit=10, columns=7)
 render_favorites()
