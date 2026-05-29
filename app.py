@@ -923,52 +923,70 @@ if search_clicked:
                 overview_html = m["overview"] if m["overview"] else "No description available."
 
                 if m["poster"] is not None:
-                    # ── Poster available ──
-                    st.image(m["poster"], use_column_width=True)
                     st.markdown(f"""
-                    <div class="movie-card movie-info-card" style="background:#141414;border-radius:0 0 10px 10px;
-                                padding:12px 14px 14px;border:1px solid #1f1f1f;
-                                border-top:none;margin-bottom:16px;">
-                        <div class="no-poster-title" style="font-size:13px;font-weight:700;color:#fff;
-                                    white-space:nowrap;overflow:hidden;
-                                    text-overflow:ellipsis;margin-bottom:5px;"
-                             title="{m['title']}">{m['title']}</div>
-                        <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;">
-                            <span style="color:#777;font-size:11px;">{year_html}</span>
-                            <span style="color:#f5c518;font-weight:600;font-size:11px;">{rating_html}</span>
+                    <div style="
+                        background:#141414;
+                        border-radius:10px;
+                        border:1px solid #1f1f1f;
+                        margin-bottom:16px;
+                        overflow:hidden;
+                    ">
+                        <div style="width:100%;aspect-ratio:2/3;overflow:hidden;">
+                            <img src="{m['poster']}" 
+                                style="
+                                    width:100%;
+                                    height:100%;
+                                    object-fit:cover;
+                                    object-position:center top;
+                                    display:block;
+                                "
+                            />
                         </div>
-                        <p style="font-size:11px;color:#aaa;line-height:1.5;margin:6px 0 0;
-                        display:-webkit-box;-webkit-line-clamp:3;
-                        -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-
-                else:
-                    # ── No poster — full card with details ──
-                    st.markdown(f"""
-                    <div class="movie-card" style="background:#141414;border-radius:10px;
-                                border:1px solid #1f1f1f;margin-bottom:16px;
-                                overflow:hidden;transition:transform 0.25s ease,box-shadow 0.25s ease;">
-                        <div class="no-poster-art" style="min-height:300px;height:300px;
-                                    background:linear-gradient(160deg,#1a0000,#0d0d0d);
-                                    display:flex;flex-direction:column;
-                                    align-items:center;justify-content:center;gap:8px;">
-                            <span style="font-size:40px;">&#127916;</span>
-                            <span style="font-size:10px;letter-spacing:2px;color:#888;
-                                         text-transform:uppercase;font-weight:600;">No Poster</span>
-                        </div>
-                        <div class="movie-info-card" style="padding:12px 14px 14px;">
-                            <div class="no-poster-title" style="font-size:13px;font-weight:700;color:#fff;
+                        <div style="padding:12px 14px 14px;">
+                            <div style="font-size:13px;font-weight:700;color:#fff;
                                         white-space:nowrap;overflow:hidden;
                                         text-overflow:ellipsis;margin-bottom:5px;"
-                                 title="{m['title']}">{m['title']}</div>
+                                title="{m['title']}">{m['title']}</div>
                             <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;">
                                 <span style="color:#777;font-size:11px;">{year_html}</span>
                                 <span style="color:#f5c518;font-weight:600;font-size:11px;">{rating_html}</span>
                             </div>
-                            <p style="font-size:11px;color:#aaa;line-height:1.5;margin:6px 0 0;
-                            display:-webkit-box;-webkit-line-clamp:3;
-                            -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
+                            <p style="font-size:11px;color:#aaa;line-height:1.5;margin:0;
+                                    display:-webkit-box;-webkit-line-clamp:3;
+                                    -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+                else:
+                    st.markdown(f"""
+                    <div style="
+                        background:#141414;
+                        border-radius:10px;
+                        border:1px solid #1f1f1f;
+                        margin-bottom:16px;
+                        overflow:hidden;
+                    ">
+                        <div style="width:100%;aspect-ratio:2/3;
+                                    background:linear-gradient(160deg,#1a0000,#0d0d0d);
+                                    display:flex;flex-direction:column;
+                                    align-items:center;justify-content:center;gap:8px;">
+                            <span style="font-size:40px;">🎬</span>
+                            <span style="font-size:10px;letter-spacing:2px;color:#555;
+                                        text-transform:uppercase;font-weight:600;">No Poster</span>
+                        </div>
+                        <div style="padding:12px 14px 14px;">
+                            <div style="font-size:13px;font-weight:700;color:#fff;
+                                        white-space:nowrap;overflow:hidden;
+                                        text-overflow:ellipsis;margin-bottom:5px;"
+                                title="{m['title']}">{m['title']}</div>
+                            <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;">
+                                <span style="color:#777;font-size:11px;">{year_html}</span>
+                                <span style="color:#f5c518;font-weight:600;font-size:11px;">{rating_html}</span>
+                            </div>
+                            <p style="font-size:11px;color:#aaa;line-height:1.5;margin:0;
+                                    display:-webkit-box;-webkit-line-clamp:3;
+                                    -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
