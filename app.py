@@ -483,19 +483,7 @@ html, body, [data-testid="stAppViewContainer"] {
     font-weight: 300;
 }
             
-[data-testid="collapsedControl"] {
-    display: flex !important;
-    visibility: visible !important;
-    background: #e50914 !important;
-    border-radius: 0 6px 6px 0 !important;
-    color: #fff !important;
-}
-[data-testid="collapsedControl"]:hover {
-    background: #ff1a1a !important;
-}
-[data-testid="collapsedControl"] svg {
-    fill: #fff !important;
-}
+
 
 .stButton > button {
     background: #e50914 !important;
@@ -596,9 +584,15 @@ html, body, [data-testid="stAppViewContainer"] {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     border-radius: 10px;
 }
+[data-testid="column"]:has(.movie-card) {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 10px;
+    cursor: pointer;
+}
 [data-testid="column"]:has(.movie-card):hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 25px rgba(229,9,20,0.4);
+    transform: translateY(-6px) !important;
+    box-shadow: 0 8px 30px rgba(229,9,20,0.45) !important;
+    z-index: 10 !important;
 }
 [data-testid="column"]:has(.movie-card):hover [data-testid="stImage"] img {
     transform: scale(1.04);
@@ -626,6 +620,29 @@ html, body, [data-testid="stAppViewContainer"] {
     color: #fff !important;
     font-weight: 700 !important;
 }
+
+/* Sidebar collapsed toggle button */
+[data-testid="collapsedControl"] {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #e50914 !important;
+    border-radius: 0 8px 8px 0 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 12px 6px !important;
+    transition: background 0.2s ease !important;
+}
+[data-testid="collapsedControl"]:hover {
+    background: #ff1a1a !important;
+    box-shadow: 2px 0 15px rgba(229,9,20,0.5) !important;
+}
+[data-testid="collapsedControl"] svg {
+    fill: #fff !important;
+    color: #fff !important;
+}
+
+/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0a0a0a; }
 ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
