@@ -482,6 +482,20 @@ html, body, [data-testid="stAppViewContainer"] {
     color: #666;
     font-weight: 300;
 }
+            
+[data-testid="collapsedControl"] {
+    display: flex !important;
+    visibility: visible !important;
+    background: #e50914 !important;
+    border-radius: 0 6px 6px 0 !important;
+    color: #fff !important;
+}
+[data-testid="collapsedControl"]:hover {
+    background: #ff1a1a !important;
+}
+[data-testid="collapsedControl"] svg {
+    fill: #fff !important;
+}
 
 .stButton > button {
     background: #e50914 !important;
