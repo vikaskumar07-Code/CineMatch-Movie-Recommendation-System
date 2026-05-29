@@ -307,21 +307,39 @@ def render_collection_card(movie, key_suffix="collection"):
     title = escape(movie.get("title", "Untitled"))
 
     if movie.get("poster"):
-        st.image(movie["poster"], use_container_width=True)
         st.markdown(f"""
-        <div class="movie-card movie-info-card" style="background:#141414;border-radius:0 0 10px 10px;
-                    padding:12px 14px 14px;border:1px solid #1f1f1f;
-                    border-top:none;margin-bottom:16px;">
-            <div class="no-poster-title" style="font-size:13px;font-weight:700;color:#fff;
-                        white-space:nowrap;overflow:hidden;
-                        text-overflow:ellipsis;margin-bottom:5px;" title="{title}">{title}</div>
-            <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;">
-                <span style="color:#777;font-size:11px;">{year_html}</span>
-                <span style="color:#f5c518;font-weight:600;font-size:11px;">{rating_html}</span>
+        <div style="
+            background:#141414;
+            border-radius:10px;
+            border:1px solid #1f1f1f;
+            margin-bottom:16px;
+            overflow:hidden;
+            transition:transform 0.25s ease,box-shadow 0.25s ease;
+        ">
+            <div style="width:100%;aspect-ratio:2/3;overflow:hidden;">
+                <img src="{movie['poster']}" 
+                    style="
+                        width:100%;
+                        height:100%;
+                        object-fit:cover;
+                        object-position:center top;
+                        display:block;
+                    "
+                />
             </div>
-            <p style="font-size:11px;color:#aaa;line-height:1.5;margin:6px 0 0;
-            display:-webkit-box;-webkit-line-clamp:3;
-            -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
+            <div style="padding:12px 14px 14px;">
+                <div style="font-size:13px;font-weight:700;color:#fff;
+                            white-space:nowrap;overflow:hidden;
+                            text-overflow:ellipsis;margin-bottom:5px;"
+                    title="{title}">{title}</div>
+                <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;">
+                    <span style="color:#777;font-size:11px;">{year_html}</span>
+                    <span style="color:#f5c518;font-weight:600;font-size:11px;">{rating_html}</span>
+                </div>
+                <p style="font-size:11px;color:#aaa;line-height:1.5;margin:0;
+                        display:-webkit-box;-webkit-line-clamp:3;
+                        -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
+            </div>
         </div>
         """, unsafe_allow_html=True)
     else:
@@ -957,8 +975,8 @@ if search_clicked:
 
 render_watch_history()
 if trending_movies:
-    render_movie_grid("&#128293; TRENDING THIS WEEK", trending_movies, limit=10, columns=7)
+    render_movie_grid("&#128293; TRENDING THIS WEEK", trending_movies, limit=14, columns=7)
 
 if top_rated_movies:
-    render_movie_grid("&#11088; TOP RATED ALL TIME", top_rated_movies, limit=10, columns=7)
+    render_movie_grid("&#11088; TOP RATED ALL TIME", top_rated_movies, limit=14, columns=7)
 render_favorites()
