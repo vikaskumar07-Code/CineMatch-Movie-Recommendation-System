@@ -520,23 +520,24 @@ html, body, [data-testid="stAppViewContainer"] {
 /* Poster full width fix */
 [data-testid="stImage"] {
     overflow: hidden;
-    transition: all 0.25s ease;
     border-radius: 10px 10px 0 0;
     width: 100% !important;
+    height: 300px !important;
     padding: 0 !important;
     margin: 0 !important;
-}
-[data-testid="stImage"] img {
-    transition: transform 0.25s ease;
-    border-radius: 10px 10px 0 0 !important;
-    width: 100% !important;
-    min-width: 100% !important;
-    object-fit: cover !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
 }
             
+[data-testid="stImage"] img {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    display: block !important;
+    border-radius: 10px 10px 0 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 [data-testid="stImageContainer"] {
     width: 100% !important;
     padding: 0 !important;
