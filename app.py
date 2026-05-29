@@ -265,8 +265,33 @@ def remember_search(movie_title):
 
 def render_favorite_button(movie_dict, key_suffix):
     added = is_favorite(movie_dict["title"])
-    label = "\u2665 Added" if added else "\u2665 Add"
-    if st.button(label, key=f"fav_{key_suffix}_{movie_dict['title']}"):
+    heart = "♥" if added else "♡"
+    color = "#e50914" if added else "#555"
+    bg = "rgba(229,9,20,0.15)" if added else "rgba(255,255,255,0.05)"
+    
+    st.markdown(f"""
+    <div style="text-align:center;margin:6px 0 10px;">
+        <span style="
+            display:inline-block;
+            background:{bg};
+            color:{color};
+            border:1px solid {color};
+            border-radius:999px;
+            padding:4px 14px;
+            font-size:11px;
+            font-weight:600;
+            letter-spacing:1px;
+            cursor:pointer;
+        ">{heart} {'ADDED' if added else 'ADD'}</span>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Invisible button for click functionality
+    if st.button(
+        f"{'♥ Added' if added else '♡ Add'}",
+        key=f"fav_{key_suffix}_{movie_dict['title']}",
+        help=f"{'Remove from' if added else 'Add to'} favorites"
+    ):
         toggle_favorite(movie_dict)
         rerun_app()
 
@@ -282,7 +307,7 @@ def render_collection_card(movie, key_suffix="collection"):
     title = escape(movie.get("title", "Untitled"))
 
     if movie.get("poster"):
-        st.image(movie["poster"], use_column_width=True)
+        st.image(movie["poster"], use_container_width=True)
         st.markdown(f"""
         <div class="movie-card movie-info-card" style="background:#141414;border-radius:0 0 10px 10px;
                     padding:12px 14px 14px;border:1px solid #1f1f1f;
@@ -492,23 +517,34 @@ html, body, [data-testid="stAppViewContainer"] {
     margin-bottom: 4px;
 }
 
-/* Hover on poster image */
+/* Poster full width fix */
 [data-testid="stImage"] {
     overflow: hidden;
     transition: all 0.25s ease;
     border-radius: 10px 10px 0 0;
-}
-[data-testid="stImage"]:hover {
-    transform: translateY(-4px);
-    filter: brightness(1.12);
-    box-shadow: 0 0 28px rgba(229,9,20,0.45);
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 [data-testid="stImage"] img {
     transition: transform 0.25s ease;
     border-radius: 10px 10px 0 0 !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
-[data-testid="stImage"]:hover img {
-    transform: scale(1.04);
+            
+[data-testid="stImageContainer"] {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+[data-testid="column"] {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
 }
 
 .stTextInput input {
