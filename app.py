@@ -319,7 +319,9 @@ def render_collection_card(movie, key_suffix="collection"):
                 <span style="color:#777;font-size:11px;">{year_html}</span>
                 <span style="color:#f5c518;font-weight:600;font-size:11px;">{rating_html}</span>
             </div>
-            <p style="font-size:11px;color:#aaa;line-height:1.6;margin:6px 0 0;">{overview_html}</p>
+            <p style="font-size:11px;color:#aaa;line-height:1.5;margin:6px 0 0;
+            display:-webkit-box;-webkit-line-clamp:3;
+            -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
         </div>
         """, unsafe_allow_html=True)
     else:
@@ -520,12 +522,15 @@ html, body, [data-testid="stAppViewContainer"] {
     overflow: hidden;
     border-radius: 10px 10px 0 0;
     width: 100% !important;
+    height: 280px !important;
     padding: 0 !important;
     margin: 0 !important;
 }
-            
 [data-testid="stImage"] img {
     width: 100% !important;
+    height: 280px !important;
+    object-fit: cover !important;
+    object-position: center top !important;
     display: block !important;
     border-radius: 10px 10px 0 0 !important;
     margin: 0 !important;
@@ -914,7 +919,9 @@ if search_clicked:
                             <span style="color:#777;font-size:11px;">{year_html}</span>
                             <span style="color:#f5c518;font-weight:600;font-size:11px;">{rating_html}</span>
                         </div>
-                        <p style="font-size:11px;color:#aaa;line-height:1.6;margin:6px 0 0;">{overview_html}</p>
+                        <p style="font-size:11px;color:#aaa;line-height:1.5;margin:6px 0 0;
+                        display:-webkit-box;-webkit-line-clamp:3;
+                        -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
                     </div>
                     """, unsafe_allow_html=True)
 
@@ -941,7 +948,9 @@ if search_clicked:
                                 <span style="color:#777;font-size:11px;">{year_html}</span>
                                 <span style="color:#f5c518;font-weight:600;font-size:11px;">{rating_html}</span>
                             </div>
-                            <p style="font-size:11px;color:#aaa;line-height:1.6;margin:6px 0 0;">{overview_html}</p>
+                            <p style="font-size:11px;color:#aaa;line-height:1.5;margin:6px 0 0;
+                            display:-webkit-box;-webkit-line-clamp:3;
+                            -webkit-box-orient:vertical;overflow:hidden;">{overview_html}</p>
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
